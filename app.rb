@@ -13,17 +13,17 @@ class SecretSanta < Sinatra::Base
   end
 
   post '/names' do
-    participant_1 = Participant.new(name: params[:participant_1_name], email: params[:participant_1_email])
-    participant_2 = Participant.new(name: params[:participant_2_name], email: params[:participant_2_email])
+    participant_1 = Participant.new(name: params[:participant_1_name], email: params[:participant_1_email], phone: params[:participant_1_phone])# this creates an instance of the participant with the params name and email attached
+    participant_2 = Participant.new(name: params[:participant_2_name], email: params[:participant_2_email], phone: params[:participant_2_phone])
 
-    participant_1.save
+    participant_1.save #This calls the save method from data mapper to the new object so that a new record is created in the relevant database table and it will populate itselft with  new data like ID.
     participant_2.save
 
-    participants = Participant.all
-    receivers = participants.map(&:name)
+    participants = Participant.all #This selects the whole table from the database
+    receivers = participants.map(&:name) #Is this selecting just the names from the table?
 
     participants.each do |participant|
-      if participant.name != receivers.last
+      if participant.name != receivers.last #
         participant.receiver = receivers.pop
         participant.save
       else
@@ -32,12 +32,15 @@ class SecretSanta < Sinatra::Base
       end
     end
 
+    @participants = participants
+
+
     redirect '/pairs'
   end
 
   get '/pairs' do
-    # @participants = Participant.all
-    # erb :pairs
+    @participants = Participant.all
+    erb :pairs
   end
 
   run! if app_file == $0

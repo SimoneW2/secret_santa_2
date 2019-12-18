@@ -3,10 +3,10 @@ source "https://rubygems.org"
 
 ruby '2.6.3'
 
-gem 'pg'
+#gem 'pg'
 gem 'sinatra'
-# gem 'data_mapper'
-gem 'data_mapper', '1.2.0'
+ gem 'data_mapper'
+
 gem 'dm-postgres-adapter'
 
 group :test do

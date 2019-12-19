@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require './lib/sms_sender'
 # require 'data_mapper'
 require_relative './data_mapper_setup'
 
@@ -9,7 +10,7 @@ class SecretSanta < Sinatra::Base
   # end
 
   get '/' do
-    erb :index
+    erb :form
   end
 
   post '/names' do
@@ -32,15 +33,19 @@ class SecretSanta < Sinatra::Base
       end
     end
 
-    @participants = participants
+    # send text message here, immediately after the receiver has been set
+    # participants.each do |participant|
+    #   SmsSender.new.send_text(participant)
+    # end
 
+    SmsSender.new.batch_notify(participants)
 
-    redirect '/pairs'
+    redirect '/confirmation'
   end
 
-  get '/pairs' do
+  get '/confirmation' do
     @participants = Participant.all
-    erb :pairs
+    erb :confirmation
   end
 
   run! if app_file == $0

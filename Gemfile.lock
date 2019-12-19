@@ -8,6 +8,7 @@ GEM
     bcrypt (3.1.13)
     bcrypt-ruby (3.1.5)
       bcrypt (>= 3.1.3)
+    byebug (11.0.1)
     capybara (3.29.0)
       addressable
       mini_mime (>= 0.1.3)
@@ -66,15 +67,19 @@ GEM
     do_postgres (0.10.17)
       data_objects (= 0.10.17)
     docile (1.3.2)
+    faraday (0.17.1)
+      multipart-post (>= 1.2, < 3)
     fastercsv (1.5.5)
     jaro_winkler (1.5.4)
     json (1.8.6)
     json_pure (1.8.6)
+    jwt (2.2.1)
     launchy (2.4.3)
       addressable (~> 2.3)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     multi_json (1.14.1)
+    multipart-post (2.1.1)
     mustermann (1.0.3)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
@@ -130,6 +135,10 @@ GEM
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     tilt (2.0.10)
+    twilio-ruby (5.31.1)
+      faraday (~> 0.9)
+      jwt (>= 1.5, <= 2.5)
+      nokogiri (>= 1.6, < 2.0)
     unicode-display_width (1.6.0)
     uuidtools (2.1.5)
     xpath (3.2.0)
@@ -139,6 +148,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug
   capybara
   data_mapper
   dm-postgres-adapter
@@ -148,6 +158,7 @@ DEPENDENCIES
   shotgun
   simplecov-console
   sinatra
+  twilio-ruby
 
 RUBY VERSION
    ruby 2.6.3p62

@@ -8,8 +8,8 @@ class SmsSender
   end
 
   def send_text(participant)
-    account_sid = 'AC8563169d342251fc790de6331d67e409'
-    auth_token = '5a6502abc00a66421303c76cdc4979b5'
+    account_sid = 'AC4aa74a6d9d68705f2a82a632191380cd'
+    auth_token = '313804e81ab28a2143ab15f6def675b5'
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
     @client.messages.create(

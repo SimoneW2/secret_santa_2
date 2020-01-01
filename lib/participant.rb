@@ -6,7 +6,7 @@ class Participant # IMPORTANT TO USE SINGLAR NOT PLURAL. datamapper will add the
 
   property :id, Serial # An auto-increment integer key
   property :name, String
-  property :phone, Integer
+  property :phone, String
   property :email, String
   property :receiver, String
   property :user_id, Integer
